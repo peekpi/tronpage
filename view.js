@@ -37,6 +37,14 @@ function vueInit() {
                             betDisable = false
                             vmcards.betDisable = false;
                         }
+                    }).catch((err)=>{
+                        D("betErr:", err)
+                        if (vmcards.checked)
+                            f();
+                        else {
+                            betDisable = false
+                            vmcards.betDisable = false;
+                        }
                     })
                 }
                 f()
@@ -52,6 +60,11 @@ function vueInit() {
                 if (res.cardsLength < cards.length)
                     vmcards.cards = vmcards.cards.slice(0, res.cardsLength)
                 //D(res, vmcards.cards.length)
+                setTimeout(f, 3000)
+            }
+        ).catch(
+            (err) => {
+                D("readError:", err);
                 setTimeout(f, 3000)
             }
         )
