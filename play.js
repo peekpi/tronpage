@@ -69,6 +69,7 @@ function CardFormat(card) {
     nzero = (n) => { return (BigInt(10) ** BigInt(n)).toString().slice(1) }
     hexadd = card.player.slice(2)
     card.player = tronWeb.address.fromHex("0x" + nzero(hexadd.length - 40) + hexadd);
+    card.isInit = Int(card.isInit)
     return card
 }
 

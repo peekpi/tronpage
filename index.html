@@ -60,20 +60,20 @@
                     <td>{{ index }}</td>
                     <td>
                         <ul>
-                            <li>{{ card.start.card.player }}</li>
-                            <li>{{ parseInt(card.start.card.betNo) }}</li>
-                            <li>{{ parseInt(card.start.card.betValue) }}</li>
-                            <li>{{ card.start.card.isInit>0?parseInt(card.start.card.cardNo):'-' }}</li>
-                            <li>{{ card.start.winValue }}</li>
+                            <li>用户: {{ card.start.card.player }}</li>
+                            <li>区块: {{ parseInt(card.start.card.betNo) }}</li>
+                            <li>TRX: {{ parseInt(card.start.card.betValue) }}</li>
+                            <li>数字: {{ card.start.card.isInit>0?parseInt(card.start.card.cardNo):'-' }}</li>
+                            <li>赢取: {{ card.start.winValue }}</li>
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li>{{ card.end.card.player }}</li>
-                            <li>{{ parseInt(card.end.card.betNo) }}</li>
-                            <li>{{ parseInt(card.end.card.betValue) }}</li>
-                            <li>{{ card.end.card.isInit>0?parseInt(card.end.card.cardNo):'-' }}</li>
-                            <li>{{ card.end.winValue }}</li>
+                            <li>用户: {{ card.end.card.player }}</li>
+                            <li>区块: {{ parseInt(card.end.card.betNo) }}</li>
+                            <li>TRX: {{ parseInt(card.end.card.betValue) }}</li>
+                            <li>数字: {{ card.end.card.isInit>0?parseInt(card.end.card.cardNo):'-' }}</li>
+                            <li>赢取: {{ card.end.winValue }}</li>
                         </ul>
                     </td>
                 </tr>
