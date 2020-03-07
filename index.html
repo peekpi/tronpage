@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="view.js"></script>
+    <script src="PushCard1.sol.js"></script>
+    <script src="Contract.js"></script>
+    <script src="play.js"></script>
+
+    <title>PushCard</title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid black;
+        }
+        .divl{
+            float: left;
+        }
+        .divr{
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cardsList">
+        <div>
+            <input type="checkbox" v-model="checked" />
+            <button v-bind:disabled="betDisable" v-on:click="greet">{{ checked?"自动下注":"下注" }}</button>
+        </div>
+        <div class="divl">
+            <table>
+                <tr>
+                    <td>序号</td>
+                    <td>用户</td>
+                    <td>区块</td>
+                    <td>下注</td>
+                    <td>号码</td>
+                </tr>
+                <tr v-for="(card, index) in cards">
+                    <td>{{ index }}</td>
+                    <td>{{ card.player }}</td>
+                    <td>{{ parseInt(card.betNo) }}</td>
+                    <td>{{ parseInt(card.betValue) }}</td>
+                    <td>{{ card.isInit>0?parseInt(card.cardNo):'-' }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="divr">
+            <table>
+                <tr><th colspan="3">赢取记录</th></tr>
+                <tr v-for="(card, index) in wincards">
+                    <td>{{ index }}</td>
+                    <td>
+                        <ul>
+                            <li>{{ card.start.card.player }}</li>
+                            <li>{{ parseInt(card.start.card.betNo) }}</li>
+                            <li>{{ parseInt(card.start.card.betValue) }}</li>
+                            <li>{{ card.start.card.isInit>0?parseInt(card.start.card.cardNo):'-' }}</li>
+                            <li>{{ card.start.winValue }}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>{{ card.end.card.player }}</li>
+                            <li>{{ parseInt(card.end.card.betNo) }}</li>
+                            <li>{{ parseInt(card.end.card.betValue) }}</li>
+                            <li>{{ card.end.card.isInit>0?parseInt(card.end.card.cardNo):'-' }}</li>
+                            <li>{{ card.end.winValue }}</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
