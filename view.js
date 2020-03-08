@@ -82,3 +82,30 @@ window.onload = (e) => {
     D("Yes, catch it:", window.tronWeb.defaultAddress.base58)
     vueInit();
 }
+
+window.addEventListener('message', function (e) {
+    if (e.data.message && e.data.message.action == "tabReply") {
+        console.log("tabReply event", e.data.message)
+        if (e.data.message.data.data.node.chain == '_'){
+            console.log("tronLink currently selects the main chain")
+        }else{
+            console.log("tronLink currently selects the side chain")
+        }
+    }
+
+    if (e.data.message && e.data.message.action == "setAccount") {
+        vmcards.player = e.data.message.data.address
+        console.log("setAccount event", e.data.message)
+        console.log("current address:", e.data.message.data.address)
+
+    }
+    if (e.data.message && e.data.message.action == "setNode") {
+        console.log("setNode event", e.data.message)
+        if (e.data.message.data.node.chain == '_'){
+            console.log("tronLink currently selects the main chain")
+        }else{
+            console.log("tronLink currently selects the side chain")
+        }
+
+    }
+})
