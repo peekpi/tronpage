@@ -36,4 +36,4 @@
 #### 体验DEMO
 [demo][demo]，需要安装`TronLink`并切换到`Shasta Testnet`。
 
-[demo]: index.html
+[demo]: demo.html
