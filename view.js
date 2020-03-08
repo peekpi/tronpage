@@ -1,10 +1,15 @@
 const D = console.log
+const JsonFile = (url)=>fetch(url).then(e=>e.json())
 
-function vueInit() {
+async function vueInit() {
     let cards = []
     let betDisable = false
     let winValue = 100
     let wincards = []
+
+    pushABI = await JsonFile("PushCard.sol.json")
+    cAddress = await JsonFile("Contract.json")
+    contractInit(pushABI.contracts, cAddress)
     vmcards = new Vue({
         el: '#cardsList',
         data: {
@@ -43,7 +48,7 @@ function vueInit() {
             }
         }
     });
-    contractInit(pushabi.contracts)
+    vmcards.$el.style.display = ""
     lastInit = 0
     f = () => {
         readCards(vmcards.cards, lastInit, vmcards.$set).then(

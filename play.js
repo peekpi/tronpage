@@ -73,7 +73,7 @@ function CardFormat(card) {
     return card
 }
 
-function contractInit(contracts) {
+function contractInit(contracts, cAddress) {
     mainEntryDeploy = localContract(contracts['action.sol:Main'].abi, cAddress.mainEntry)
     pushCardDeploy = localContract(contracts['PushCard.sol:PushCard'].abi, cAddress.pushCard)
 }
