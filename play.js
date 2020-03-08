@@ -117,7 +117,6 @@ function pushcard() {
 }
 
 function watchWinner(wincards) {
-    xresult = {};
     pushCardDeploy.winner().watch((err, eventResult) => {
         if (err) {
             return console.error('Error with "method" event:', err);

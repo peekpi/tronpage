@@ -4,21 +4,13 @@ function vueInit() {
     let cards = []
     let betDisable = false
     let winValue = 100
-    let wincards = [{
-        benefit: Int(winValue * 0.1),
-        start: {
-            card: Object.assign({}, {player:1,betNo:2,cardNo:3,betValue:4,isInit:1}),
-            winValue: winValue * 0.45
-        },
-        end: {
-            card: Object.assign({}, {player:1,betNo:2,cardNo:3,betValue:4,isInit:1}),
-            winValue: winValue * 0.45
-        }
-    }]
-    wincards = []
+    let wincards = []
     vmcards = new Vue({
         el: '#cardsList',
         data: {
+            player: tronWeb.defaultAddress.base58,
+            entryAddress: cAddress.mainEntry,
+            cardAddress: cAddress.pushCard,
             cards: cards,
             wincards: wincards,
             checked: false,

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="view.js"></script>
-    <script src="PushCard1.sol.js"></script>
+    <script src="PushCard.sol.js"></script>
     <script src="Contract.js"></script>
     <script src="play.js"></script>
 
@@ -31,7 +31,12 @@
 
 <body>
     <div id="cardsList">
-        <div><a href="https://www.trongrid.io/faucet" target="view_window">申请测试币</a></div>
+        <div>
+            <a href="https://www.trongrid.io/faucet" target="view_window">申请测试币</a>
+            <p>entry: {{ entryAddress }} </p>
+            <p>card: {{ cardAddress }} </p>
+            <p>player: {{ player }} </p>
+        </div>
         <div>
             <input type="checkbox" v-model="checked" />
             <button v-bind:disabled="betDisable" v-on:click="greet">{{ checked?"自动下注":"下注" }}</button>
