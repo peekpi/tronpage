@@ -86,11 +86,13 @@ window.onload = (e) => {
 window.addEventListener('message', function (e) {
     if (e.data.message && e.data.message.action == "tabReply") {
         console.log("tabReply event", e.data.message)
+        /*
         if (e.data.message.data.data.node.chain == '_'){
             console.log("tronLink currently selects the main chain")
         }else{
             console.log("tronLink currently selects the side chain")
         }
+        */
     }
 
     if (e.data.message && e.data.message.action == "setAccount") {

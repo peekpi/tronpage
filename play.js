@@ -116,6 +116,16 @@ function pushcard() {
     return sendTx(tx, 10)
 }
 
+function FeedHashes(blockno) {
+    tronWeb.trx.getBlockByNumber(Int(blockno)).then((block)=>{
+        sendTx(mainEntryDeploy.FeedHash(blockno, '0x'+block.blockID))
+    })
+}
+
+function deal() {
+    sendTx(mainEntryDeploy.deal())
+}
+
 function watchWinner(wincards) {
     pushCardDeploy.winner().watch((err, eventResult) => {
         if (err) {
