@@ -49,7 +49,7 @@
                     <td>号码</td>
                 </tr>
                 <tr v-for="(card, index) in cards">
-                    <td>{{ index }}</td>
+                    <td>{{ card.isInit>0?card.index:index }}</td>
                     <td>{{ card.player }}</td>
                     <td>{{ parseInt(card.betNo) }}</td>
                     <td>{{ parseInt(card.betValue) }}</td>
@@ -69,6 +69,7 @@
                             <li>TRX: {{ parseInt(card.start.card.betValue) }}</li>
                             <li>数字: {{ card.start.card.isInit>0?parseInt(card.start.card.cardNo):'-' }}</li>
                             <li>赢取: {{ card.start.winValue }}</li>
+                            <li>序号: {{ card.start.card.index }}</li>
                         </ul>
                     </td>
                     <td>
@@ -78,6 +79,7 @@
                             <li>TRX: {{ parseInt(card.end.card.betValue) }}</li>
                             <li>数字: {{ card.end.card.isInit>0?parseInt(card.end.card.cardNo):'-' }}</li>
                             <li>赢取: {{ card.end.winValue }}</li>
+                            <li>序号: {{ card.end.card.index }}</li>
                         </ul>
                     </td>
                 </tr>

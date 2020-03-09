@@ -21,13 +21,13 @@ function sendTx(txobj, trx = 0, fee = 2, sync = true) {
     });
 }
 
-function CardInfoDecode(en) { en = BigInt(en); return { player: '0x' + (en & BigInt('0xffffffffffffffffffffffffffffffffffffffff')).toString(16), betNo: '0x' + ((en >> BigInt('160')) & BigInt('0xffffffff')).toString(16), betValue: '0x' + ((en >> BigInt('192')) & BigInt('0xffffffff')).toString(16), cardNo: '0x' + ((en >> BigInt('224')) & BigInt('0xff')).toString(16), isInit: '0x' + ((en >> BigInt('232')) & BigInt('0xff')).toString(16) }; }
-
+function CardInfoDecode(en){en=BigInt(en);return {player:'0x'+(en&BigInt('0xffffffffffffffffffffffffffffffffffffffff')).toString(16),betNo:'0x'+((en>>BigInt('160'))&BigInt('0xffffffff')).toString(16),betValue:'0x'+((en>>BigInt('192'))&BigInt('0xffffffff')).toString(16),cardNo:'0x'+((en>>BigInt('224'))&BigInt('0xff')).toString(16),index:'0x'+((en>>BigInt('232'))&BigInt('0xffff')).toString(16),isInit:'0x'+((en>>BigInt('248'))&BigInt('0xff')).toString(16)};}
 function CardFormat(card) {
     nzero = (n) => { return (BigInt(10) ** BigInt(n)).toString().slice(1) }
     hexadd = card.player.slice(2)
     card.player = tronWeb.address.fromHex("0x" + nzero(hexadd.length - 40) + hexadd);
     card.isInit = Int(card.isInit)
+    card.index = Int(card.index)
     return card
 }
 
@@ -53,14 +53,13 @@ async function readCards(cards, lastInit, set) {
             //continue
         }
         let cardi = await pushCardDeploy.cards(i).call()
-        let decard = CardInfoDecode(cardi)
+        let decard = CardFormat(CardInfoDecode(cardi))
 
         if (Int(decard.isInit) > 0)
             lastInit = isInit ? lastInit : lastInit + 1;
         else
             isInit = true
 
-        CardFormat(decard)
         if (i < cards.length)
             set(cards, i, decard)
         else
